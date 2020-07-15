@@ -1,9 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
-    </ion-buttons>
-    <ion-title>articleCreate</ion-title>
+    <ion-title>articleEdit</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -13,33 +10,38 @@
   </ion-label>
 </ion-content>
 
-<ion-content>
+<ion-content *ngIf="article">
+
+  <ion-input [(ngModel)]="article._id" name="_id" type="hidden"></ion-input>
+
   <ion-item>
-    <ion-label position="floating">Title</ion-label>
+    <ion-label>Title</ion-label>
     <ion-input [(ngModel)]="article.title" name="title" type="text"></ion-input>
     <div *ngIf="errors.title"> {{ errors.title }} </div>
   </ion-item>
 
   <ion-item>
-    <ion-label position="floating">Description</ion-label>
+    <ion-label>Description</ion-label>
     <ion-input [(ngModel)]="article.description" name="description" type="text"></ion-input>
     <div *ngIf="errors.description"> {{ errors.description }} </div>
   </ion-item>
 
   <ion-item>
-    <ion-label position="floating">Keywords</ion-label>
+    <ion-label>Keywords</ion-label>
     <ion-input [(ngModel)]="article.keywords" name="keywords" type="text"></ion-input>
     <div *ngIf="errors.keywords"> {{ errors.keywords }} </div>
   </ion-item>
 
   <ion-item>
-    <ion-label position="floating">Body</ion-label>
+    <ion-label>Body</ion-label>
     <ion-input [(ngModel)]="article.body" name="body" type="text"></ion-input>
+    <div *ngIf="errors.body"> {{ errors.body }} </div>
   </ion-item>
 
   <ion-item>
-    <ion-label position="floating">Published</ion-label>
-    <ion-input [(ngModel)]="article.published" name="published" type="date"></ion-input>
+    <ion-label>Modified</ion-label>
+    <ion-input [(ngModel)]="article.modified" name="modified" type="date"></ion-input>
+    <div *ngIf="errors.modified"> {{ errors.modified }} </div>
   </ion-item>
 
   <ion-button color="primary" expand="full" (click)="onSubmit()">Submit</ion-button>
